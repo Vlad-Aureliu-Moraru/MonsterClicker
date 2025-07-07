@@ -12,7 +12,7 @@ public class PANEL_mainmenu extends JPanel {
     private BUTTON_play button_play = new BUTTON_play();
     private BUTTON_settings button_settings =  new BUTTON_settings();
     private BUTTON_exit button_exit = new BUTTON_exit();
-
+    private Image background = new ImageIcon("assets/BackgroundImg/MainMenuBg.png").getImage();
     private int GAME_WIDTH;
     private int GAME_HEIGHT;
 
@@ -27,9 +27,9 @@ public class PANEL_mainmenu extends JPanel {
         addButtons();
     }
     private void addButtons() {
-        button_play.setBounds(GAME_WIDTH-300,GAME_HEIGHT-650, 250, 70);
-        button_settings.setBounds(GAME_WIDTH-300,GAME_HEIGHT-500, 250, 70);
-        button_exit.setBounds(GAME_WIDTH -300, GAME_HEIGHT-350, 250, 70);
+        button_play.setBounds(GAME_WIDTH-850,GAME_HEIGHT-650, 250, 70);
+        button_settings.setBounds(GAME_WIDTH-850,GAME_HEIGHT-500, 250, 70);
+        button_exit.setBounds(GAME_WIDTH -850, GAME_HEIGHT-350, 250, 70);
         this.add(button_play);
         this.add(button_settings);
         this.add(button_exit);
@@ -39,5 +39,9 @@ public class PANEL_mainmenu extends JPanel {
         button_play.setGameStateManager(gameStateManager);
         button_exit.setGameStateManager(gameStateManager);
         button_settings.setGameStateManager(gameStateManager);
+    }
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(background, 0, 0,GAME_WIDTH,GAME_HEIGHT, this);
     }
 }

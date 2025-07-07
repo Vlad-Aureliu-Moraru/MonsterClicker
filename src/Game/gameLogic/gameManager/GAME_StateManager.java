@@ -8,11 +8,12 @@ public class GAME_StateManager {
     private boolean inGame = false;
     private boolean inSettings = false;
     private boolean inMenu = true;
+    private FRAME_main frameMain;
     public GAME_StateManager() {
         SCREEN_resolution_reader.writeToGameFile();
     }
     public void START_GAME(){
-        FRAME_main frameMain = new FRAME_main();
+        frameMain = new FRAME_main();
         frameMain.getPanelMainmenu().setGameStateManager(this);
     }
     public void STATE_PLAYING(){
@@ -23,6 +24,32 @@ public class GAME_StateManager {
         }else{
             System.out.println("ALREADY STATE PLAYING");
         }
-
     }
+    public void STATE_SETTINGS(){
+        if(!inSettings){
+            inSettings = true;
+            inMenu = false;
+            inGame = false;
+            System.out.println("STATE SETTINGS");
+            frameMain.openSettings();
+            frameMain.revalidate();
+            frameMain.repaint();
+        }else {
+            System.out.println("ALREADY STATE SETTINGS");
+        }
+    }
+    public void STATE_MENU(){
+        if(!inMenu){
+            inMenu = true;
+            inGame = false;
+            inSettings = false;
+            System.out.println("STATE MENU");
+        }else  {
+            System.out.println("ALREADY STATE MENU");
+        }
+    }
+    public void STATE_EXIT(){
+        frameMain.dispose();
+    }
+
 }

@@ -1,42 +1,63 @@
 package Game.UI;
 
 import Game.UI.mainMenu.PANEL_mainmenu;
+import Game.UI.settings.PANEL_settings;
 import Game.gameLogic.SCREEN_resolution.SCREEN_resolution_reader;
 
 import javax.swing.*;
+import java.awt.*;
+import javax.swing.*;
+import java.awt.*;
 
-public class FRAME_main  extends JFrame {
-    private PANEL_mainmenu panelMainmenu ;
-    private SCREEN_resolution_reader screen_resolution =  new SCREEN_resolution_reader();
-    private int SCREEN_WIDTH  = screen_resolution.readFromGameFile()[0];
-    private int SCREEN_HEIGHT  =  screen_resolution.readFromGameFile()[1];
+public class FRAME_main extends JFrame {
 
-    private int GAME_WIDTH  = SCREEN_WIDTH/2;
-    private int GAME_HEIGHT = SCREEN_HEIGHT-150;
+    // --- Fields ---
+    private PANEL_mainmenu panelMainmenu;
+    private PANEL_settings panelsettings;
+    private CardLayout cardLayout;
+    private JPanel mainPanel; // This panel will use CardLayout
 
     public FRAME_main() {
+        SCREEN_resolution_reader screen_resolution = new SCREEN_resolution_reader();
+        int[] resolution = screen_resolution.readFromGameFile();
+        int SCREEN_WIDTH = resolution[0];
+        int SCREEN_HEIGHT = resolution[1];
+        int GAME_WIDTH = SCREEN_WIDTH / 2;
+        int GAME_HEIGHT = SCREEN_HEIGHT - 150;
+
         setTitle("Monster Clicker");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(GAME_WIDTH,GAME_HEIGHT);
-        panelMainmenu = new PANEL_mainmenu(GAME_WIDTH, GAME_HEIGHT);
-        setVisible(true);
+        setSize(GAME_WIDTH, GAME_HEIGHT);
         setResizable(false);
-        setLocationRelativeTo(null);
-        setLayout(null);
-        loadMainMenu();
 
+        cardLayout = new CardLayout();
+        mainPanel = new JPanel(cardLayout);
+
+        panelMainmenu = new PANEL_mainmenu(GAME_WIDTH, GAME_HEIGHT);
+        panelsettings = new PANEL_settings(GAME_WIDTH, GAME_HEIGHT);
+
+        mainPanel.add(panelMainmenu, "MAINMENU");
+        mainPanel.add(panelsettings, "SETTINGS");
+
+        this.add(mainPanel);
+
+        cardLayout.show(mainPanel, "MAINMENU");
+
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 
-    public void clearFrame(){
-        this.removeAll();
+    public void openSettings() {
+        cardLayout.show(mainPanel, "SETTINGS");
     }
 
     public void loadMainMenu() {
-        panelMainmenu.setBounds(0,0,GAME_WIDTH,GAME_HEIGHT);
-        this.add(panelMainmenu);
+        cardLayout.show(mainPanel, "MAINMENU");
+    }
+   public void clearFrame(){
+        this.removeAll();
     }
     public PANEL_mainmenu getPanelMainmenu() {
         return panelMainmenu;
     }
-
 }

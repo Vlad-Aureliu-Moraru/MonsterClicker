@@ -29,7 +29,7 @@ public class BUTTON_settings extends BUTTON {
         this.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 if (!clicked && !animationTimer.isRunning()) {
-                    gameStateManager.STATE_PLAYING();
+                    gameStateManager.STATE_SETTINGS();
                     clicked = true;
                     setUsingSprite(getSprites().get(1));
                     update();
