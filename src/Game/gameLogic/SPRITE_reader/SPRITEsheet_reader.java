@@ -37,7 +37,7 @@ public class SPRITEsheet_reader {
             }
         }
 
-        System.out.println("Loaded " + sprites.size() + " sprites.");
+        System.out.println("Loaded " + sprites.size() + " sprites. from " +  filePath);
         return sprites;
     }
 }
