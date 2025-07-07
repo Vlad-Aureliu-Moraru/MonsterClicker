@@ -1,8 +1,8 @@
-package Game.UI.mainMenu;
+package Game.menuUI.mainMenu;
 
-import Game.UI.mainMenu.Buttons.BUTTON_exit;
-import Game.UI.mainMenu.Buttons.BUTTON_play;
-import Game.UI.mainMenu.Buttons.BUTTON_settings;
+import Game.menuUI.mainMenu.Buttons.BUTTON_exit;
+import Game.menuUI.mainMenu.Buttons.BUTTON_play;
+import Game.menuUI.mainMenu.Buttons.BUTTON_settings;
 import Game.gameLogic.gameManager.GAME_StateManager;
 
 import javax.swing.*;
@@ -27,9 +27,9 @@ public class PANEL_mainmenu extends JPanel {
         addButtons();
     }
     private void addButtons() {
-        button_play.setBounds(GAME_WIDTH-850,GAME_HEIGHT-650, 250, 70);
-        button_settings.setBounds(GAME_WIDTH-850,GAME_HEIGHT-500, 250, 70);
-        button_exit.setBounds(GAME_WIDTH -850, GAME_HEIGHT-350, 250, 70);
+        button_play.setBounds(GAME_WIDTH/8,GAME_HEIGHT-650, 250, 70);
+        button_settings.setBounds(GAME_WIDTH/8,GAME_HEIGHT-500, 250, 70);
+        button_exit.setBounds(GAME_WIDTH/8, GAME_HEIGHT-350, 250, 70);
         this.add(button_play);
         this.add(button_settings);
         this.add(button_exit);

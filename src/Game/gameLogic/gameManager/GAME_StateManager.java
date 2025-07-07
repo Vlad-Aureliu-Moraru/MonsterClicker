@@ -1,6 +1,6 @@
 package Game.gameLogic.gameManager;
 
-import Game.UI.FRAME_main;
+import Game.menuUI.FRAME_main;
 import Game.gameLogic.SCREEN_resolution.SCREEN_resolution_reader;
 
 public class GAME_StateManager {
@@ -15,12 +15,15 @@ public class GAME_StateManager {
     public void START_GAME(){
         frameMain = new FRAME_main();
         frameMain.getPanelMainmenu().setGameStateManager(this);
+        frameMain.getPanelsettings().setGameStateManager(this);
+        frameMain.getPanelgame().setGameStateManager(this);
     }
     public void STATE_PLAYING(){
         if(!inGame){
             inGame = true;
             inMenu = false;
             System.out.println("STATE PLAYING");
+            frameMain.loadGame();
         }else{
             System.out.println("ALREADY STATE PLAYING");
         }
@@ -44,6 +47,7 @@ public class GAME_StateManager {
             inGame = false;
             inSettings = false;
             System.out.println("STATE MENU");
+            frameMain.loadMainMenu();
         }else  {
             System.out.println("ALREADY STATE MENU");
         }

@@ -1,27 +1,21 @@
-package Game.UI.mainMenu.Buttons;
+package Game.menuUI.settings.Buttons;
 
-import Game.UI.BUTTON;
-import Game.gameLogic.SPRITE_reader.SPRITEsheet_reader;
+import Game.menuUI.BUTTON;
 import Game.gameLogic.gameManager.GAME_StateManager;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 
-public class BUTTON_play extends BUTTON {
+public class BUTTON_menu  extends BUTTON {
     private GAME_StateManager gameStateManager;
-
     private boolean clicked = false;
     private Timer animationTimer;
-
-    public BUTTON_play() {
-        super("assets/ButtonSprites/playButtonSprite.png");
-        this.setSpriteDetails(100,30,0,0,0,10);
+    public BUTTON_menu() {
+        super("assets/ButtonSprites/menuButtonSprite.png");
+        this.setSpriteDetails(37,30,0,0,0,10);
         setUsingSprite(getSprites().get(0));
         this.setOpaque(false);
         this.addAction();
@@ -34,9 +28,9 @@ public class BUTTON_play extends BUTTON {
         this.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 if (!clicked && !animationTimer.isRunning()) {
-                    gameStateManager.STATE_PLAYING();
                     clicked = true;
                     setUsingSprite(getSprites().get(1));
+                    update();
                     animationTimer.start();
                 }
             }
@@ -49,9 +43,11 @@ public class BUTTON_play extends BUTTON {
             public void actionPerformed(ActionEvent e) {
                 if (clicked) {
                     setUsingSprite(getSprites().get(0));
+                    update();
                 }
                 clicked = false;
                 animationTimer.stop();
+                gameStateManager.STATE_MENU();
             }
         });
 

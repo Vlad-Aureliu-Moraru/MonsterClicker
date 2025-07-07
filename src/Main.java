@@ -1,5 +1,3 @@
-import Game.UI.FRAME_main;
-import Game.gameLogic.SCREEN_resolution.SCREEN_resolution_reader;
 import Game.gameLogic.gameManager.GAME_StateManager;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or

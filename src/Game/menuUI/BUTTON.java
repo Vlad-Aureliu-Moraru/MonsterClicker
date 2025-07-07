@@ -1,4 +1,4 @@
-package Game.UI;
+package Game.menuUI;
 
 import Game.gameLogic.SPRITE_reader.SPRITEsheet_reader;
 
