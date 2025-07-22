@@ -1,5 +1,4 @@
 package Game.Entities;
-
 public class generalEntity {
     private int health;
     private int maxHealth;
