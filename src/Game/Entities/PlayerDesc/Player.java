@@ -1,12 +1,14 @@
 package Game.Entities.PlayerDesc;
 
 import Game.Entities.generalEntity;
+import Game.Items.generalItem;
 
 public class Player extends generalEntity {
     private int money;
     private int experience;
     private int maxExperience;
     private int level;
+    private PlayerInventory inventory = new PlayerInventory();
 
     public int getMoney() {
         return money;
@@ -38,5 +40,8 @@ public class Player extends generalEntity {
 
     public void setLevel(int level) {
         this.level = level;
+    }
+    public void addToPlayerInventory(generalItem item){
+
     }
 }

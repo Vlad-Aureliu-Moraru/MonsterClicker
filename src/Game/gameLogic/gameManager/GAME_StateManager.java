@@ -1,5 +1,6 @@
 package Game.gameLogic.gameManager;
 
+import Game.Entities.PlayerDesc.Player;
 import Game.menuUI.FRAME_main;
 import Game.gameLogic.SCREEN_resolution.SCREEN_resolution_reader;
 
@@ -9,8 +10,13 @@ public class GAME_StateManager {
     private boolean inSettings = false;
     private boolean inMenu = true;
     private FRAME_main frameMain;
+
+    private Player player = new Player();
+
+
     public GAME_StateManager() {
         SCREEN_resolution_reader.writeToGameFile();
+        player.setMoney(1000);
     }
     public void START_GAME(){
         frameMain = new FRAME_main();
@@ -24,6 +30,7 @@ public class GAME_StateManager {
             inMenu = false;
             System.out.println("STATE PLAYING");
             frameMain.loadGame();
+            frameMain.getPanelgame().setPlayer(player);
         }else{
             System.out.println("ALREADY STATE PLAYING");
         }

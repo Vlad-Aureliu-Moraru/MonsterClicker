@@ -1,5 +1,6 @@
 package Game.gameUI;
 
+import Game.Entities.PlayerDesc.Player;
 import Game.gameLogic.gameManager.GAME_StateManager;
 import Game.gameUI.Inventory.PANEL_inventory;
 import Game.menuUI.settings.Buttons.BUTTON_menu;
@@ -11,6 +12,7 @@ public class PANEL_game extends JPanel {
     private int GAME_WIDTH;
     private int GAME_HEIGHT;
     private GAME_StateManager gameStateManager;
+    private Player player;
 
     private Image background = new ImageIcon("assets/BackgroundImg/GameBg.png").getImage();
 
@@ -38,5 +40,9 @@ public class PANEL_game extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(background, 0, 0,GAME_WIDTH,GAME_HEIGHT, this);
+    }
+    public void setPlayer(Player player) {
+        this.player = player;
+        panel_inventory.setPlayer(player);
     }
 }

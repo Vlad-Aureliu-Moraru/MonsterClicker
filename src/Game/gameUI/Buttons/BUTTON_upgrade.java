@@ -1,5 +1,6 @@
 package Game.gameUI.Buttons;
 
+import Game.Entities.PlayerDesc.Player;
 import Game.menuUI.BUTTON;
 
 import javax.swing.*;
@@ -13,11 +14,17 @@ public class BUTTON_upgrade extends BUTTON {
     private boolean clicked = false;
     private Timer animationTimer;
 
-    public BUTTON_upgrade() {
+    private Player player;
+
+    public BUTTON_upgrade(Player player) {
         super("assets/ButtonSprites/UpgradeWeaponButton.png");
+        this.player = player;
         this.setSpriteDetails(80,40,0,0,0,10);
         setUsingSprite(getSprites().get(0));
 //        this.setBackground(Color.red);
+        if (player == null) {
+            throw new NullPointerException("Player is null");
+        }
         this.addAction();
         initAnimTimer();
     }
@@ -26,6 +33,7 @@ public class BUTTON_upgrade extends BUTTON {
             public void mouseClicked(MouseEvent e) {
                 if (!clicked && !animationTimer.isRunning()) {
                     clicked = true;
+                    System.out.println(player.getMoney());
                     setUsingSprite(getSprites().get(1));
                     update();
                     animationTimer.start();
